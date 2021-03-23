@@ -26,7 +26,7 @@
   }
 }
 
-.App-header {
+body {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -76,4 +76,13 @@ h1 + p {
   h1 {
     padding-bottom: 1em;
   }
+}
+
+label input {
+  margin-left: .66em;
+}
+
+label {
+  display: inline-block;
+  margin-left: 1em;
 }
