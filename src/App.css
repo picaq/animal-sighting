@@ -1,15 +1,27 @@
+:root {
+  --body: 'Lato', sans-serif;
+  --display: 'Pangolin', sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 2.25em;
   pointer-events: none;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  right: -.17em;
+  transform-origin: 50% 39%; /* rotate from center of circle */
+  transform-origin: 50% 100%; /* sway from bottom tip */
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 2s ease-in-out;
+    animation-direction: alternate;
   }
 }
 
@@ -21,7 +33,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: whitesmoke;
 }
 
 .App-link {
@@ -30,9 +42,18 @@
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-3.3deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(3.3deg);
   }
+}
+
+body {
+  font-family: var(--body);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--display);
+  letter-spacing: .03em;
 }
