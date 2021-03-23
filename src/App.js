@@ -24,9 +24,16 @@ const NewSighting = (props) => {
     <>
       <h2>{props.title}</h2>
       <form>
+        <label htmlFor="date seen">date seen
+          <input 
+            type="date" 
+            name="date seen" 
+            id="dateSeen"/>
+        </label>
+
         <label htmlFor="time seen">time seen
           <input 
-            type="datetime" 
+            type="time" 
             name="time seen" 
             id="timeSeen"/>
         </label>
@@ -37,6 +44,37 @@ const NewSighting = (props) => {
             name="nickname" 
             id="nickname"/>
         </label>
+        
+
+        <label htmlFor="id">id
+          <input 
+            type="number" 
+            name="id"
+            min="1" 
+            id="id"/>
+        </label>
+
+        <label htmlFor="location">location
+          <input 
+            type="text" 
+            name="location" 
+            id="location"/>
+        </label>
+
+        <label htmlFor="healthy">healthy
+          <input 
+            type="checkbox" 
+            name="healthy" 
+            id="healthy"/>
+        </label>
+
+        <label htmlFor="email">email
+          <input 
+            type="text" 
+            name="email" 
+            id="email"/>
+        </label>
+
       </form>
     </>
   )
