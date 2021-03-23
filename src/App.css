@@ -84,5 +84,5 @@ label input {
 
 label {
   display: inline-block;
-  margin-left: 1em;
+  margin: 0 1em 1em 0;
 }
