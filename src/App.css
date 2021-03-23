@@ -1,6 +1,7 @@
 :root {
   --body: 'Lato', sans-serif;
   --display: 'Pangolin', sans-serif;
+  --light: whitesmoke;
 }
 
 .App {
@@ -34,7 +35,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: whitesmoke;
+  color: var(--light);
 }
 
 .App-link {
@@ -85,4 +86,8 @@ label input {
 label {
   display: inline-block;
   margin: 0 1em 1em 0;
+}
+
+input {
+  background-color: var(--light);
 }
