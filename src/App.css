@@ -16,6 +16,7 @@
   right: -.17em;
   transform-origin: 50% 39%; /* rotate from center of circle */
   transform-origin: 50% 100%; /* sway from bottom tip */
+  /* padding-bottom: 1em; */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -56,4 +57,23 @@ body {
 h1, h2, h3, h4, h5 {
   font-family: var(--display);
   letter-spacing: .03em;
+}
+
+h1 {
+  line-height: 0;
+  margin-bottom: -1em;
+  max-width: 100%;
+}
+
+h1 + p {
+  margin: 0;
+  padding: 0;
+  padding-top: 1em;
+  padding-left: 2.22em;
+}
+
+@media only screen and (max-width: 549px) {
+  h1 {
+    padding-bottom: 1em;
+  }
 }
