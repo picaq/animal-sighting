@@ -169,7 +169,8 @@ const NewSighting = (props) => {
             type="checkbox" 
             name="healthy" 
             id="healthy"
-            onChange={ (e) => setHealth(e.target.value) } 
+            checked= { healthy }
+            onClick={ () => setHealth( healthy ? false : true ) } 
             />
         </label>
 
