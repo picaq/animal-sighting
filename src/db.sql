@@ -1,3 +1,5 @@
+CREATE DATABASE animals;
+
 CREATE TABLE species (
     id SERIAL PRIMARY KEY,
     common TEXT,
