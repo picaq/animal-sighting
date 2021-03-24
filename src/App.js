@@ -1,7 +1,13 @@
 import logo from './assets/paw.png';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
+let timeOnLoad = new Date().toISOString().split(/[T.]/);
+let today = timeOnLoad[0];
+let now = timeOnLoad[1];
+
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
