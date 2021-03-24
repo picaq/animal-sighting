@@ -160,7 +160,7 @@ const NewSighting = (props) => {
             type="text" 
             name="location" 
             id="location"
-            value={ location }
+            placeholder="my backyard"
             onChange={ (e) => setLocation(e.target.value) } 
             />    
         </label>
