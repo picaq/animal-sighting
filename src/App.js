@@ -28,17 +28,49 @@ const NewSighting = (props) => {
 
   const [dateSeen, setDateSeen] = useState(today);
   useEffect( () => {
-    console.log("Date Changed", {dateSeen})
+    console.log("dateSeen changed", {dateSeen})
   }, [dateSeen] );
 
   const [timeSeen, setTimeSeen] = useState(now);
   useEffect( () => {
-    console.log("Time Changed", {timeSeen})
+    console.log("timeSeen changed", {timeSeen})
   }, [timeSeen] );
 
+  const [nickname, setNickname] = useState("unnamed");
+  useEffect( () => {
+    console.log("nickname changed", {nickname})
+  }, [nickname] );
 
-  let sightingObject = {dateSeen, timeSeen};
+  const [individual_id, setID] = useState("");
+  useEffect( () => {
+    console.log("individual_id changed", {individual_id})
+  }, [individual_id] );
+
+  const [location, setLocation] = useState("");
+  useEffect( () => {
+    console.log("email changed", {location})
+  }, [location] );
+
+  const [healthy, setHealth] = useState(true);
+  useEffect( () => {
+    console.log("healthy changed", {healthy})
+  }, [healthy] );
+
+  const [email, setEmail] = useState("");
+  useEffect( () => {
+    console.log("email changed", {email})
+  }, [email] );
+
+  const [species, setSpecies] = useState("");
+  useEffect( () => {
+    console.log("species changed", {species})
+  }, [species] );
+
+
+  
   let sendSightingObject = () => {
+    let timeStamp = new Date().toISOString();
+    let sightingObject = { dateSeen, timeSeen, species, nickname, individual_id, location, healthy, email, timeStamp };
     console.log("Add Sighting button pressed", sightingObject);
   }
 
@@ -91,9 +123,22 @@ const NewSighting = (props) => {
           <input 
             type="text" 
             name="nickname" 
-            id="nickname"/>
+            id="nickname"
+            value={ nickname }
+            onChange={ (e) => setNickname(e.target.value) }   
+            />
         </label>
         
+        <label htmlFor="species">
+        species
+          <input 
+            type="text" 
+            name="species" 
+            id="species"
+            value={ species }
+            onChange={ (e) => setSpecies(e.target.value) }   
+            />
+        </label>        
 
         <label htmlFor="id">
           id
@@ -101,7 +146,10 @@ const NewSighting = (props) => {
             type="number" 
             name="id"
             min="0" 
-            id="id"/>
+            id="id"
+            value={ individual_id }
+            onChange={ (e) => setID(e.target.value) } 
+            />
         </label>
 
         <label htmlFor="location">
@@ -109,7 +157,10 @@ const NewSighting = (props) => {
           <input 
             type="text" 
             name="location" 
-            id="location"/>    
+            id="location"
+            value={ location }
+            onChange={ (e) => setLocation(e.target.value) } 
+            />    
         </label>
 
         <label htmlFor="healthy">
@@ -117,7 +168,9 @@ const NewSighting = (props) => {
           <input 
             type="checkbox" 
             name="healthy" 
-            id="healthy"/>
+            id="healthy"
+            onChange={ (e) => setHealth(e.target.value) } 
+            />
         </label>
 
         <label htmlFor="email">
@@ -125,7 +178,9 @@ const NewSighting = (props) => {
           <input 
             type="text" 
             name="email" 
-            id="email"/>
+            id="email"
+            onChange={ (e) => setEmail(e.target.value) } 
+            />
         </label>
 
       <button
