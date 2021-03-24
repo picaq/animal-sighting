@@ -95,36 +95,49 @@ const NewSighting = (props) => {
         </label>
         
 
-        <label htmlFor="id">id
+        <label htmlFor="id">
+          id
           <input 
             type="number" 
             name="id"
-            min="1" 
+            min="0" 
             id="id"/>
         </label>
 
-        <label htmlFor="location">location
+        <label htmlFor="location">
+          location
           <input 
             type="text" 
             name="location" 
-            id="location"/>
+            id="location"/>    
         </label>
 
-        <label htmlFor="healthy">healthy
+        <label htmlFor="healthy">
+          healthy
           <input 
             type="checkbox" 
             name="healthy" 
             id="healthy"/>
         </label>
 
-        <label htmlFor="email">email
+        <label htmlFor="email">
+          email
           <input 
             type="text" 
             name="email" 
             id="email"/>
         </label>
 
-      </form>
+      <button
+      /* type="submit"  */
+        onClick={ () => sendSightingObject() }
+        name={ props.title }
+        value={ props.title }
+      > 
+      Add { props.title }
+      </button>
+
+      </div>
     </>
   )
 }
@@ -132,8 +145,8 @@ const NewSighting = (props) => {
 const SightingsList = (props) => {
   return(
     <>
-      <h2>{props.title}</h2>
-      <ul></ul>
+      <h2>{ props.title }</h2>
+      <ul className="list"></ul>
     </>
   )
 }
