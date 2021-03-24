@@ -46,7 +46,7 @@ const NewSighting = (props) => {
     console.log("individual_id changed", {individual_id})
   }, [individual_id] );
 
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("null island");
   useEffect( () => {
     console.log("email changed", {location})
   }, [location] );
@@ -56,12 +56,12 @@ const NewSighting = (props) => {
     console.log("healthy changed", {healthy})
   }, [healthy] );
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("soylent@gmail.com");
   useEffect( () => {
     console.log("email changed", {email})
   }, [email] );
 
-  const [species, setSpecies] = useState("");
+  const [species, setSpecies] = useState("unidentified");
   useEffect( () => {
     console.log("species changed", {species})
   }, [species] );
@@ -124,7 +124,8 @@ const NewSighting = (props) => {
             type="text" 
             name="nickname" 
             id="nickname"
-            value={ nickname }
+            // value={ nickname }
+            placeholder="an identifying name"
             onChange={ (e) => setNickname(e.target.value) }   
             />
         </label>
@@ -135,7 +136,7 @@ const NewSighting = (props) => {
             type="text" 
             name="species" 
             id="species"
-            value={ species }
+            placeholder="scientific binomial"
             onChange={ (e) => setSpecies(e.target.value) }   
             />
         </label>        
@@ -148,6 +149,7 @@ const NewSighting = (props) => {
             min="0" 
             id="id"
             value={ individual_id }
+            placeholder="individual id #"
             onChange={ (e) => setID(e.target.value) } 
             />
         </label>
@@ -180,6 +182,7 @@ const NewSighting = (props) => {
             type="text" 
             name="email" 
             id="email"
+            placeholder={ email }
             onChange={ (e) => setEmail(e.target.value) } 
             />
         </label>
