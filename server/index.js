@@ -17,7 +17,14 @@ app.listen(9000, () => {
 // create a sighting
 app.post("/sighting", async(req, res) => {
     try {
-        console.log(req.body);
+        // console.log(req.body);
+        const { sightingObject } = req.body;
+        const newSighting = await pool.query(`
+        INSERT INTO sightings(time_seen, individual_id, location, healthy, email, timestamp)
+        VALUES($1, $2, $3, $4, $5, $6);
+        `,
+        [ sightingObject ]
+        )
     } catch (err) {
         console.log(err.message);
     }
