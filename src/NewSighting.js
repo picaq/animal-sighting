@@ -49,34 +49,54 @@ const NewSighting = (props) => {
   
     
     let sendSightingObject = () => {
-      let timeStamp = new Date().toISOString();
-      let sightingObject = { dateSeen, timeSeen, species, nickname, individual_id, location, healthy, email, timeStamp };
+      let timestamp = new Date().toISOString();
+      let date_seen = dateSeen + " " + timeSeen;
+      let sightingObject = { date_seen, species, nickname, individual_id, location, healthy, email, timestamp };
       console.log("Add Sighting button pressed", sightingObject);
+    }
+
+    const onSubmitForm = async (e) => {
+      let timestamp = new Date().toISOString();
+      let date_seen = dateSeen + " " + timeSeen;
+      let sightingObject = { date_seen, species, nickname, individual_id, location, healthy, email, timestamp };
+      e.preventDefault(); // prevents refreshing
+      try {
+        const body = { sightingObject };
+        const response = await fetch("http://localhost:9000/sighting", {
+          method: "POST", // fetch makes GET request by default
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        })
+        console.log(response);
+      } catch (error) {
+        console.error(error.message);  
+      }
     }
   
     return(
       <>
         <h2>{ props.title }</h2>
+        <form>
+          <label htmlFor="new">
+            <input 
+              type="radio" 
+              id="new" 
+              name="which" 
+              value="new" /> 
+              New { props.name }
+          </label>
+
+          <label htmlFor="existing">
+            <input 
+              type="radio" 
+              id="existing" 
+              name="which" 
+              value="existing" />
+              Existing { props.name }
+          </label>
+        </form>
+
         <div>
-          <form>
-            <label htmlFor="new">
-              <input 
-                type="radio" 
-                id="new" 
-                name="which" 
-                value="new" /> 
-                New { props.name }
-            </label>
-  
-            <label htmlFor="existing">
-              <input 
-                type="radio" 
-                id="existing" 
-                name="which" 
-                value="existing" />
-                Existing { props.name }
-            </label>
-          </form>
           <label htmlFor="date seen">date seen
             <input 
               type="date" 
@@ -168,10 +188,11 @@ const NewSighting = (props) => {
           </label>
   
         <button
-        /* type="submit"  */
-          onClick={ () => sendSightingObject() }
+          // type="submit"
+          onClick={ () => sendSightingObject() , onSubmitForm }
           name={ props.title }
           value={ props.title }
+          // onSubmit={onSubmitForm}
         > 
         Add { props.title }
         </button>
