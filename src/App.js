@@ -13,8 +13,8 @@ function App() {
       </header>
       
       <main>
-        <SightingsList title="All Sightings" name="Individual" />
         <NewSighting title="New Sighting"/>
+        <SightingsList title="All Sightings" name="Individual" />
       </main>
       
     </div>
@@ -23,11 +23,13 @@ function App() {
 
 const SightingsList = (props) => {
 
+  const [ sightings, setSightings ] = useState([]);
+
   const getSightings = async() => {
     try {
       const response = await fetch("http://localhost:9000/sighting");
       const jsonData = await response.json();
-
+      setSightings(jsonData);
       console.log(jsonData);
     } catch (error) {
       console.error(error.message);
@@ -36,12 +38,40 @@ const SightingsList = (props) => {
 
   useEffect( () => {
     getSightings();
-  });
+  }, []);
+
+  // console.log(sightings);
 
   return(
     <>
       <h2>{ props.title }</h2>
-      <ul className="list"></ul>
+      <table>
+        <thead>
+          <tr>
+            <th>sighting id</th>
+            <th>time seen</th>
+            <th>individual id</th>
+            <th>location</th>
+            <th>healthy?</th>
+            <th>email</th>
+            <th>recorded timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+        { sightings.map( sighting => (
+          <tr> 
+            <td>{sighting.id}</td>
+            <td>{sighting.time_seen}</td>
+            <td>{sighting.individual_id}</td>
+            <td>{sighting.location}</td>
+            <td>{sighting.healthy ? "yes" : "no" }</td>
+            <td>{sighting.email}</td>
+            <td>{sighting.timestamp}</td> 
+          </tr>
+        ))}
+        </tbody>
+        </table>
+
     </>
   )
 }
