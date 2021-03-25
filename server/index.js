@@ -36,7 +36,7 @@ app.post("/sighting", async(req, res) => {
 
 // get all sightings
 
-app.get("/list", async(req, res) => {
+app.get("/sighting", async(req, res) => {
     try {
         const allSightings = await pool.query("SELECT * FROM sightings");
         res.json(allSightings.rows);
@@ -47,9 +47,14 @@ app.get("/list", async(req, res) => {
 
 // get a sightings
 
-app.get("/list/:id", async (req, res) => {
+app.get("/sighting/:id", async (req, res) => {
     try {
-        console.log(req.params);
+        // console.log(req.params);
+        const { id } = req.params;
+        const todo = await pool.query(`
+        SELECT * FROM sightings
+        WHERE id = $1,
+        `, [id] ) 
     } catch (error) {
         console.error(error.mesage);
     }
