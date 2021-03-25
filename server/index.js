@@ -14,6 +14,15 @@ app.listen(9000, () => {
 
 // ROUTES
 
+// create a sighting
+app.post("/sighting", async(req, res) => {
+    try {
+        console.log(req.body);
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
+
 // get all sightings
 
-// update a sighting
