@@ -27,7 +27,7 @@ app.post("/sighting", async(req, res) => {
          [time_seen, individual_id, location, healthy, email, timestamp]
         );
 
-        res.json(...newSighting.rows);       
+        res.json(newSighting.rows[0]);       
     } catch (err) {
         console.log(err.message);
     }
@@ -39,7 +39,7 @@ app.post("/sighting", async(req, res) => {
 app.get("/sighting", async(req, res) => {
     try {
         const allSightings = await pool.query("SELECT * FROM sightings");
-        res.json(allSightings.rows);
+        res.json(allSightings.rows); // returns an array
     } catch (error) {
         console.error(error.message);
     }
@@ -51,10 +51,11 @@ app.get("/sighting/:id", async (req, res) => {
     try {
         // console.log(req.params);
         const { id } = req.params;
-        const todo = await pool.query(`
+        const sighting = await pool.query(`
         SELECT * FROM sightings
         WHERE id = $1,
-        `, [id] ) 
+        `, [id] );
+        res.json(sighting.rows[0]);
     } catch (error) {
         console.error(error.mesage);
     }
