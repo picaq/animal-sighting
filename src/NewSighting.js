@@ -50,24 +50,25 @@ const NewSighting = (props) => {
     
     let sendSightingObject = () => {
       let timestamp = new Date().toISOString();
-      let date_seen = dateSeen + " " + timeSeen;
-      let sightingObject = { date_seen, species, nickname, individual_id, location, healthy, email, timestamp };
+      let time_seen = dateSeen + " " + timeSeen;
+      let sightingObject = { time_seen, species, nickname, individual_id, location, healthy, email, timestamp };
       console.log("Add Sighting button pressed", sightingObject);
     }
 
     const onSubmitForm = async (e) => {
       let timestamp = new Date().toISOString();
-      let date_seen = dateSeen + " " + timeSeen;
-      let sightingObject = { date_seen, species, nickname, individual_id, location, healthy, email, timestamp };
+      let time_seen = dateSeen + " " + timeSeen;
+      let sightingObject = { time_seen, species, nickname, individual_id, location, healthy, email, timestamp };
       e.preventDefault(); // prevents refreshing
       try {
-        const body = { sightingObject };
+        const body = sightingObject ;
         const response = await fetch("http://localhost:9000/sighting", {
           method: "POST", // fetch makes GET request by default
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         })
         console.log(response);
+        console.log(sightingObject);
       } catch (error) {
         console.error(error.message);  
       }
