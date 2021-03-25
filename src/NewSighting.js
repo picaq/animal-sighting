@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-let timeOnLoad = new Date().toISOString().split(/[T.]/);
+let timeOnLoad = new Date().toISOString().split(/[T.]/); // this makes the time in UTC and I can’t figure out how to make it into local time but still retain the ISO format so that the today and now variables can be read by the date and time inputs
 let today = timeOnLoad[0];
 let now = timeOnLoad[1];
 
