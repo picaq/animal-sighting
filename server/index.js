@@ -18,14 +18,16 @@ app.listen(9000, () => {
 app.post("/sighting", async(req, res) => {
     try {
         // console.log(req.body);
-        const { time_seen, individual_id, location, healthy, email, timeStamp } = req.body;
+        const { time_seen, individual_id, location, healthy, email, timestamp } = req.body;
         const newSighting = await pool.query(`
         INSERT INTO sightings(time_seen, individual_id, location, healthy, email, timestamp)
         VALUES($1, $2, $3, $4, $5, $6)
         RETURNING *;
         `,
-         [time_seen, individual_id, location, healthy, email, timeStamp]
-        )
+         [time_seen, individual_id, location, healthy, email, timestamp]
+        );
+
+        res.json(...newSighting.rows);       
     } catch (err) {
         console.log(err.message);
     }
