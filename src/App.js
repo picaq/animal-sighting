@@ -22,6 +22,22 @@ function App() {
 }
 
 const SightingsList = (props) => {
+
+  const getSightings = async() => {
+    try {
+      const response = await fetch("http://localhost:9000/sighting");
+      const jsonData = await response.json();
+
+      console.log(jsonData);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  useEffect( () => {
+    getSightings();
+  });
+
   return(
     <>
       <h2>{ props.title }</h2>

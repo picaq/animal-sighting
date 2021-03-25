@@ -69,6 +69,7 @@ const NewSighting = (props) => {
         })
         console.log(response);
         console.log(sightingObject);
+        window.location = "/"; // refresh after done sending
       } catch (error) {
         console.error(error.message);  
       }
