@@ -41,6 +41,16 @@ app.get("/list", async(req, res) => {
         const allSightings = await pool.query("SELECT * FROM sightings");
         res.json(allSightings.rows);
     } catch (error) {
-        console.error(err.message);
+        console.error(error.message);
+    }
+})
+
+// get a sightings
+
+app.get("/list/:id", async (req, res) => {
+    try {
+        console.log(req.params);
+    } catch (error) {
+        console.error(error.mesage);
     }
 })
