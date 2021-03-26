@@ -61,12 +61,12 @@ const SightingsList = (props) => {
         { sightings.map( sighting => (
           <tr> 
             <td>{sighting.id}</td>
-            <td>{sighting.time_seen}</td>
+            <td>{sighting.time_seen ? new Date(sighting.time_seen).toLocaleDateString() + " " + new Date(sighting.time_seen).toLocaleTimeString() : null }</td>
             <td>{sighting.individual_id}</td>
             <td>{sighting.location}</td>
-            <td>{sighting.healthy ? "yes" : "no" }</td>
+            <td>{sighting.healthy ? "yes" : sighting.healthy === false ? "no" : null }</td>
             <td>{sighting.email}</td>
-            <td>{sighting.timestamp}</td> 
+            <td>{sighting.timestamp ? new Date(sighting.timestamp).toLocaleDateString() + " " + new Date(sighting.timestamp).toLocaleTimeString() : null }</td> 
           </tr>
         ))}
         </tbody>
