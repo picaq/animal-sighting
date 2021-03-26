@@ -88,6 +88,14 @@ label {
   margin: 0 1em 1em 0;
 }
 
-input {
+input, button {
   background-color: var(--light);
+}
+
+table tr {
+  font-size: calc(.3em + .9vw);
+}
+
+table {
+  margin: 0 auto;
 }
